@@ -2,7 +2,7 @@ import './style.css';
 
 const ul = document.querySelector('ul');
 const form = document.querySelector('form');
-const input = document.querySelector('form > input');
+const input = document.querySelector<HTMLInputElement>('form > input');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -107,6 +107,7 @@ const addTodo = (text) => {
     todos.push({
       text: `${text[0].toUpperCase()}${text.slice(1)}`,
       done: false,
+      editMode: false
     });
     displayTodo();
   }
