@@ -1,7 +1,8 @@
 {
-  "name": "dyma",
+  "name": "dyma-typescript5-todo-project",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Final project of Dyma.fr's TypeScript course, which consists in transforming a tiny JS todo-list app into a TypeScript app.",
   "type": "module",
   "scripts": {
     "start": "vite",
