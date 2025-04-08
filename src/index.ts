@@ -5,14 +5,14 @@ const ul: HTMLUListElement = document.querySelector('ul')!;
 const form: HTMLFormElement = document.querySelector('form')!;
 const input: HTMLInputElement = document.querySelector<HTMLInputElement>('form > input')!;
 
-form.addEventListener('submit', (event: SubmitEvent) => {
+form.addEventListener('submit', (event: SubmitEvent): void => {
   event.preventDefault();
   const value = input.value;
   input.value = '';
   addTodo(value);
 });
 
-document.addEventListener('keydown', (event: KeyboardEvent) => {
+document.addEventListener('keydown', (event: KeyboardEvent): void => {
   if (event.key === 'Escape' && todos.find((t) => t.editMode)) {
     todos.find((t) => t.editMode).editMode = false;
     displayTodo();
@@ -28,7 +28,7 @@ const todos: Todo[] = [
 ];
 
 const displayTodo = () => {
-  const todosNode = todos.map((todo: Todo, index: number) => {
+  const todosNode = todos.map((todo: Todo, index: number): void => {
     if (todo.editMode) {
       return createTodoEditElement(todo, index);
     } else {
@@ -39,7 +39,7 @@ const displayTodo = () => {
   ul.append(...todosNode);
 };
 
-const createTodoElement = (todo: Todo, index: number) => {
+const createTodoElement = (todo: Todo, index: number): HTMLLIElement => {
   const li: HTMLLIElement = document.createElement('li');
   const buttonDelete: HTMLButtonElement = document.createElement('button');
   buttonDelete.innerHTML = 'Supprimer';
@@ -74,7 +74,7 @@ const createTodoElement = (todo: Todo, index: number) => {
   return li;
 };
 
-const createTodoEditElement = (todo: Todo, index: number) => {
+const createTodoEditElement = (todo: Todo, index: number): HTMLLIElement => {
   const li: HTMLLIElement = document.createElement('li');
   const input: HTMLInputElement = document.createElement('input');
   input.type = 'text';
@@ -102,7 +102,7 @@ const createTodoEditElement = (todo: Todo, index: number) => {
   return li;
 };
 
-const addTodo = (text) => {
+const addTodo = (text): void => {
   text = text.trim();
   if (text) {
     todos.push({
@@ -114,22 +114,22 @@ const addTodo = (text) => {
   }
 };
 
-const deleteTodo = (index: number) => {
+const deleteTodo = (index: number): void => {
   todos.splice(index, 1);
   displayTodo();
 };
 
-const toggleTodo = (index: number) => {
+const toggleTodo = (index: number): void => {
   todos[index].done = !todos[index].done;
   displayTodo();
 };
 
-const toggleEditMode = (index: number) => {
+const toggleEditMode = (index: number): void => {
   todos[index].editMode = !todos[index].editMode;
   displayTodo();
 };
 
-const editTodo = (index: number, input) => {
+const editTodo = (index: number, input): void => {
   const value = input.value;
   todos[index].text = value;
   todos[index].editMode = false;
