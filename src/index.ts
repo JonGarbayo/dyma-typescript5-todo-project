@@ -59,7 +59,7 @@ const createTodoElement = (todo: Todo, index: number): HTMLLIElement => {
     <span class="todo ${todo.done ? 'done' : ''}"></span>
     <p class="${todo.done ? 'done' : ''}">${todo.text}</p>
   `;
-  let timer;
+  let timer: ReturnType<typeof setTimeout>;
   li.addEventListener('click', (event: MouseEvent) => {
     if (event.detail === 1) {
       timer = setTimeout(() => {
