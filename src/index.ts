@@ -1,4 +1,4 @@
-import './style.css';
+import './style/style.css';
 
 const ul = document.querySelector('ul');
 const form = document.querySelector('form');
