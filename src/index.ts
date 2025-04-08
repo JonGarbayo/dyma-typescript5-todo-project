@@ -102,7 +102,7 @@ const createTodoEditElement = (todo: Todo, index: number): HTMLLIElement => {
   return li;
 };
 
-const addTodo = (text): void => {
+const addTodo = (text: string): void => {
   text = text.trim();
   if (text) {
     todos.push({
@@ -129,7 +129,7 @@ const toggleEditMode = (index: number): void => {
   displayTodo();
 };
 
-const editTodo = (index: number, input): void => {
+const editTodo = (index: number, input: HTMLInputElement): void => {
   const value = input.value;
   todos[index].text = value;
   todos[index].editMode = false;
