@@ -40,11 +40,11 @@ const displayTodo = () => {
 };
 
 const createTodoElement = (todo: Todo, index: number) => {
-  const li = document.createElement('li');
-  const buttonDelete = document.createElement('button');
+  const li: HTMLLIElement = document.createElement('li');
+  const buttonDelete: HTMLButtonElement = document.createElement('button');
   buttonDelete.innerHTML = 'Supprimer';
   buttonDelete.classList.add('danger');
-  const buttonEdit = document.createElement('button');
+  const buttonEdit: HTMLButtonElement = document.createElement('button');
   buttonEdit.innerHTML = 'Edit';
   buttonEdit.classList.add('primary');
   buttonDelete.addEventListener('click', (event: MouseEvent) => {
@@ -75,8 +75,8 @@ const createTodoElement = (todo: Todo, index: number) => {
 };
 
 const createTodoEditElement = (todo: Todo, index: number) => {
-  const li = document.createElement('li');
-  const input = document.createElement('input');
+  const li: HTMLLIElement = document.createElement('li');
+  const input: HTMLInputElement = document.createElement('input');
   input.type = 'text';
   input.value = todo.text;
   input.addEventListener('keydown', (event: KeyboardEvent) => {
@@ -84,10 +84,10 @@ const createTodoEditElement = (todo: Todo, index: number) => {
       editTodo(index, input);
     }
   });
-  const buttonSave = document.createElement('button');
+  const buttonSave: HTMLButtonElement = document.createElement('button');
   buttonSave.innerHTML = 'Save';
   buttonSave.classList.add('success');
-  const buttonCancel = document.createElement('button');
+  const buttonCancel: HTMLButtonElement = document.createElement('button');
   buttonCancel.innerHTML = 'Cancel';
   buttonCancel.classList.add('danger');
   buttonCancel.addEventListener('click', (event: MouseEvent) => {
