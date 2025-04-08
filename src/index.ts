@@ -5,14 +5,14 @@ const ul: HTMLUListElement = document.querySelector('ul')!;
 const form: HTMLFormElement = document.querySelector('form')!;
 const input: HTMLInputElement = document.querySelector<HTMLInputElement>('form > input')!;
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', (event: SubmitEvent) => {
   event.preventDefault();
   const value = input.value;
   input.value = '';
   addTodo(value);
 });
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event: KeyboardEvent) => {
   if (event.key === 'Escape' && todos.find((t) => t.editMode)) {
     todos.find((t) => t.editMode).editMode = false;
     displayTodo();
@@ -47,11 +47,11 @@ const createTodoElement = (todo: Todo, index) => {
   const buttonEdit = document.createElement('button');
   buttonEdit.innerHTML = 'Edit';
   buttonEdit.classList.add('primary');
-  buttonDelete.addEventListener('click', (event) => {
+  buttonDelete.addEventListener('click', (event: MouseEvent) => {
     event.stopPropagation();
     deleteTodo(index);
   });
-  buttonEdit.addEventListener('click', (event) => {
+  buttonEdit.addEventListener('click', (event: MouseEvent) => {
     event.stopPropagation();
     toggleEditMode(index);
   });
@@ -60,7 +60,7 @@ const createTodoElement = (todo: Todo, index) => {
     <p class="${todo.done ? 'done' : ''}">${todo.text}</p>
   `;
   let timer;
-  li.addEventListener('click', (event) => {
+  li.addEventListener('click', (event: MouseEvent) => {
     if (event.detail === 1) {
       timer = setTimeout(() => {
         toggleTodo(index);
@@ -79,7 +79,7 @@ const createTodoEditElement = (todo: Todo, index) => {
   const input = document.createElement('input');
   input.type = 'text';
   input.value = todo.text;
-  input.addEventListener('keydown', (event) => {
+  input.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       editTodo(index, input);
     }
@@ -90,11 +90,11 @@ const createTodoEditElement = (todo: Todo, index) => {
   const buttonCancel = document.createElement('button');
   buttonCancel.innerHTML = 'Cancel';
   buttonCancel.classList.add('danger');
-  buttonCancel.addEventListener('click', (event) => {
+  buttonCancel.addEventListener('click', (event: MouseEvent) => {
     event.stopPropagation();
     toggleEditMode(index);
   });
-  buttonSave.addEventListener('click', (event) => {
+  buttonSave.addEventListener('click', () => {
     editTodo(index, input);
   });
   li.append(input, buttonSave, buttonCancel);
