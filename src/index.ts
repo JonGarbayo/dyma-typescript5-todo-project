@@ -1,3 +1,4 @@
+import { Todo } from './interfaces/todo.interface';
 import './style/style.css';
 
 const ul: HTMLUListElement = document.querySelector('ul')!;
@@ -18,7 +19,7 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-const todos = [
+const todos: Todo[] = [
   {
     text: 'Faire du JavaScript',
     done: true,
@@ -27,7 +28,7 @@ const todos = [
 ];
 
 const displayTodo = () => {
-  const todosNode = todos.map((todo, index) => {
+  const todosNode = todos.map((todo: Todo, index) => {
     if (todo.editMode) {
       return createTodoEditElement(todo, index);
     } else {
@@ -38,7 +39,7 @@ const displayTodo = () => {
   ul.append(...todosNode);
 };
 
-const createTodoElement = (todo, index) => {
+const createTodoElement = (todo: Todo, index) => {
   const li = document.createElement('li');
   const buttonDelete = document.createElement('button');
   buttonDelete.innerHTML = 'Supprimer';
@@ -73,7 +74,7 @@ const createTodoElement = (todo, index) => {
   return li;
 };
 
-const createTodoEditElement = (todo, index) => {
+const createTodoEditElement = (todo: Todo, index) => {
   const li = document.createElement('li');
   const input = document.createElement('input');
   input.type = 'text';
