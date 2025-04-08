@@ -1,8 +1,8 @@
 import './style/style.css';
 
-const ul = document.querySelector('ul');
-const form = document.querySelector('form');
-const input = document.querySelector<HTMLInputElement>('form > input');
+const ul: HTMLUListElement = document.querySelector('ul')!;
+const form: HTMLFormElement = document.querySelector('form')!;
+const input: HTMLInputElement = document.querySelector<HTMLInputElement>('form > input')!;
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
